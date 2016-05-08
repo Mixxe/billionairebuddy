@@ -1,0 +1,1 @@
+[07-May-2016 18:31:13 Asia/Kolkata] PHP Fatal error:  Call to a member function num_rows() on a non-object in /home/encoresky/public_html/staging/application/models/Data_Model.php on line 455

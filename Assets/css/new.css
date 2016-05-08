@@ -1,0 +1,188 @@
+a:focus {
+    outline: 0 none;
+}
+.rel {
+    position: relative;
+}
+.pad0 {
+    padding: 0;
+}
+.padR0 {
+    padding-right: 0;
+}
+.padL0 {
+    padding-left: 0;
+}
+.page-heading {
+    border-top: 0;
+    padding: 20px 10px 20px 10px;
+}
+.page-heading .breadcrumb {
+    font-size: 14px;
+}
+.page-heading h2 {
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.form_view_wrapper .form_create a.btn {
+    position: relative;
+    height: 30px;
+    padding: 0 10px 0 30px;
+    font-weight: 400;
+    margin-left: 5px;
+    line-height: 28px;
+}
+.form_view_wrapper .form_create a.btn span:before {
+    position: absolute;
+    left: 8px;
+    content: "\f055";
+    display: inline-block;
+    font-family: "FontAwesome";
+    color: #fff;
+    font-size: 20px;
+}
+.form_view_wrapper .form_create a i {
+    font-size: 18px;
+    color: #fff;
+    padding-right: 4px;
+}
+.form_view_wrapper .form_create input::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+.form_view_wrapper .form_create input:-moz-placeholder { 
+    font-style: italic;  
+}
+
+.form_view_wrapper .form_create input::-moz-placeholder { 
+    font-style: italic;  
+}
+
+.form_view_wrapper .form_create input:-ms-input-placeholder {  
+    font-style: italic;  
+}
+.form_view_wrapper .form_create input {
+    height: 30px;
+}
+.form_view_wrapper .form_create .btn_search {
+    background: #e7eaec;
+    border-color: #ddd;
+    height: 30px;
+    font-size: 17px;
+    padding: 2px 7px;
+    color: #999;
+}
+.form_view_wrapper .footable-odd {
+    background: transparent; 
+}
+.form_view_wrapper table.view_form_table thead th {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #676a6c;
+}
+.form_view_wrapper table.view_form_table tr td {
+    color: #676a6c;
+    font-size: 13px;
+    font-weight: 400;
+    vertical-align: middle;
+
+}
+.form_view_wrapper table.view_form_table tbody tr td a.copy {
+    height: 28px;
+    width: 28px;
+    line-height: 25px;
+    font-size: 17px;
+    margin-right: 5px;
+    padding: 0;
+}
+.form_view_wrapper table.view_form_table tbody tr td a.edit {
+    height: 28px;
+    width: 28px;
+    line-height: 26px;
+    font-size: 15px;
+    margin-right: 5px;
+    padding: 0;
+}
+.form_view_wrapper table.view_form_table tbody tr td a.delete {
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    font-size: 14px;
+    padding: 0;
+}
+.form_view_wrapper .pagination {
+    margin-top: 20px!important;
+}
+.form_view_wrapper .pagination li a {
+    color: #676a6c!important;
+}
+.form_view_wrapper .show_page label {
+    font-weight: 400;
+}
+.form_view_wrapper .show_page .form-control {
+    border: 1px solid #ACACAD;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0 3px 0;
+}
+.form_view_wrapper .paging_info {
+    font-size: 12px;
+    margin-top: 3px;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    font-weight: 800;
+}
+
+.new_form .ibox .ibox-title h3 {
+    font-size: 22px;
+    border-bottom: 0 !important;
+    padding-bottom: 0;
+}
+.new_form .create_title h3 {
+    font-size: 22px;
+    border-bottom: 0 !important;
+    padding: 15px 0;
+    border-top: 2px solid #E2E2E2;
+    margin-top: 25px;
+}
+
+.new_form .ibox-content {
+    border: 0 !important;
+}
+.new_form .form-group {
+    margin-bottom: 8px;
+}
+.new_form .form-horizontal .control-label,.new_form label{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+}
+.new_form .i-checks {
+    padding-left: 0;
+    display: inline-block;
+    margin-right: 28px;
+    margin-top: 7px;
+}
+.new_form .icheckbox_square-green,.new_form .iradio_square-green {
+    margin-right: 3px;
+}
+.recpt {
+    padding: 0 8px 0 0;
+}
+.border_tl {
+    border: 1px solid #ddd;
+    padding: 7px 15px 12px 15px;
+}
+.border_tl label span {
+    font-weight: 600;
+}
+.border_tl .form-control {
+    padding: 3px 12px;
+}
+.border_tl .form-group {
+    margin-bottom: 6px;
+}
+.new_form .form-horizontal .btn i {
+    padding-right: 3px;
+}
