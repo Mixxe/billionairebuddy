@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
                             </ul>
                         </li>
-                        <li class="<?php echo (isset($page) && $page && $page == 'Qoutes') ? 'active' : ''; ?>">
+                        <li class="<?php echo (isset($page) && $page && $page == 'Quotes') ? 'active' : ''; ?>">
                             <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Quotes</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li class="<?php echo (isset($page_title) && $page_title && $page_title == 'Quotes') ? 'active' : ''; ?>">
@@ -84,6 +84,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
                                 <li class="<?php echo (isset($page_title) && $page_title && $page_title == 'Add Quote') ? 'active' : ''; ?>">
                                     <a href="<?php echo base_url(); ?>admin/add_quote">Add Quote</a>
+                                </li>                                
+                                <li class="<?php echo (isset($page_title) && $page_title && $page_title == 'Import Quotes') ? 'active' : ''; ?>">
+                                    <a href="<?php echo base_url(); ?>admin/import_quotes">Import Quotes</a>
                                 </li>
                             </ul>
                         </li>

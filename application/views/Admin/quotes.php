@@ -8,6 +8,12 @@
                         <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>admin/add_quote">
                             <i class="fa fa-plus"></i> Add New
                         </a>
+                        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>admin/import_quotes">
+                            <i class="fa fa-upload"></i> Import CSV
+                        </a>
+                        <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>Uploads/sample-quotes.csv">
+                            <i class="fa fa-download"></i> Sample CSV
+                        </a>
                         <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>admin/export/quotes">
                             <i class="fa fa-download"></i> Export Quotes
                         </a>

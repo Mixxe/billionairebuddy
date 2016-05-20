@@ -68,8 +68,8 @@
                                                 foreach ($institutions AS $row_institution) {
                                                     ?>
                                                     <option value="<?php echo $row_institution['institution_id']; ?>"
-                                                            <?php echo (isset($instrument) && $instrument && $instrument['institution_id'] == $row_institution['institution_id']) ? "selected" : ""; ?>>
-                                                                <?php echo $row_institution['institution_name'] . '-' . $row_institution['manager_name']; ?>
+													<?php echo (isset($instrument) && $instrument && $instrument['institution_id'] == $row_institution['institution_id']) ? "selected" : ""; ?>>
+														<?php echo $row_institution['institution_name'] . '-' . $row_institution['manager_name']; ?>
                                                     </option>
                                                     <?php
                                                 }
@@ -77,18 +77,24 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="stock_name">Stock Name</label>
-                                        <input type="text" placeholder="Enter Stock Name" class="form-control" name="stock_name" id="stock_name"
-                                               required data-parsley-required-message="Please Enter Stock Name"
-                                               value="<?php echo (isset($instrument) && $instrument && $instrument['stock_name']) ? $instrument['stock_name'] : ""; ?>" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="stock_symbol">Stock Symbol</label>
-                                        <input type="text" placeholder="Enter Stock Name" class="form-control" name="stock_symbol" id="stock_symbol"
-                                               required data-parsley-required-message="Please Enter Stock Symbol"
-                                               value="<?php echo (isset($instrument) && $instrument && $instrument['stock_symbol']) ? $instrument['stock_symbol'] : ""; ?>" />
-                                    </div>
+									<div class="form-group">
+										<label for="quote_id">Select Stock Quote</label>
+										<select name="quote_id" id="quote_id" class="form-control" required data-parsley-required-message="Please Select Stock Quote">
+											<option value="">Select Stock Quote</option>
+											<?php
+											if (isset($quotes) && $quotes && sizeof($quotes)) {
+												foreach ($quotes AS $quote) {
+													?>
+													<option value="<?php echo $quote['quote_id']; ?>"
+													<?php echo (isset($instrument) && $instrument && $instrument['quote_id'] == $quote['quote_id']) ? "selected" : ""; ?>>
+														<?php echo $quote['quote_name'] . '-' . $quote['quote_symbol']; ?>
+													</option>
+													<?php
+												}
+											}
+											?>
+										</select>
+									</div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 b-r">
                                     <div class="form-group">
