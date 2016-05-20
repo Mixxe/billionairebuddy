@@ -127,7 +127,7 @@ class Data_Model extends CI_Model {
         $this->db->select('`manager_name`, `manager_bio`, `manager_photo`, `institution_name`, `institution_bio`');
         $this->db->select('`instrument_id`, `quote_name`, `quote_symbol`, `stock_price`, `stock_discount`, `stock_description`');
         $this->db->select('`quote_open`, `quote_high`, `quote_low`, `quote_close`, `quote_date`, `quote_current`');
-        $this->db->select('institutions.institution_id');
+        $this->db->select('institutions.institution_id AS institution_id, quotes.quote_id AS quote_id');
         $this->db->from('`institutions`, `instruments`, `quotes`');
         $this->db->where('institutions.institution_id=instruments.institution_id');
         $this->db->where('quotes.quote_id=instruments.quote_id');
@@ -330,7 +330,7 @@ class Data_Model extends CI_Model {
     }
 
     // Import CSV Data Into Database
-    function importCSVData(){
+    function importCSVData($type = ""){
         $temp_file_name = date('dmYhis');
         $config['file_name'] = $temp_file_name;
         $config['upload_path'] = './Uploads/';
@@ -349,24 +349,40 @@ class Data_Model extends CI_Model {
                 $file = fopen($myfile, 'r');
                 $i = 1;
                 $data_array = array();
-                while (($row = fgetcsv($file, $max_row_size, $separator, $enclosure)) != false) {
-                    // Ignore Headings
-                    if($i > 1){
-                        if ($row[0] != null) {
-                            $temp_array = array();
-                            $temp_array['institution_id'] = $row[0];
-                            $temp_array['quote_id'] = $row[1];
-                            $temp_array['stock_price'] = $row[2];
-                            $temp_array['stock_description'] = $row[3];
-                            $data_array[] = $temp_array;
+                // If Instruments
+                if($type == 'instruments'){
+                    while (($row = fgetcsv($file, $max_row_size, $separator, $enclosure)) != false) {
+                        // Ignore Headings
+                        if($i > 1){
+                            if ($row[0] != null) {
+                                $temp_array = array();
+                                $temp_array['institution_id'] = $row[0];
+                                $temp_array['quote_id'] = $row[1];
+                                $temp_array['stock_price'] = $row[2];
+                                $temp_array['stock_description'] = $row[3];
+                                $data_array[] = $temp_array;
+                            }
                         }
+                        $i++;
                     }
-                    $i++;
+                }elseif($type == 'quotes'){
+                    while (($row = fgetcsv($file, $max_row_size, $separator, $enclosure)) != false) {
+                        // Ignore Headings
+                        if($i > 1){
+                            if ($row[0] != null) {
+                                $temp_array = array();
+                                $temp_array['quote_name'] = $row[0];
+                                $temp_array['quote_symbol'] = $row[1];
+                                $data_array[] = $temp_array;
+                            }
+                        }
+                        $i++;
+                    }   
                 }
                 fclose($file);
                 // Insert Into Database
                 if($data_array && sizeof($data_array)){
-                    $this->db->insert_batch('instruments', $data_array);
+                    $this->db->insert_batch($type, $data_array);
                     return 1;
                 }else{
                     return 101;
