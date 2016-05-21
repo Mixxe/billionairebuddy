@@ -21,8 +21,13 @@ class Index extends CI_Controller {
         $data['instruments'] = $this->data_model->getInstruments(0, 0, 0, $flag);
         $data['page'] = "Instruments";
         $data['all'] = 0;
+        /*
         $this->load->view('header', $data);
         $this->load->view('instruments');
+        $this->load->view('footer');
+        */
+        $this->load->view('header', $data);
+        $this->load->view('index');
         $this->load->view('footer');
     }
 

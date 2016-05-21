@@ -253,22 +253,36 @@ class Admin extends CI_Controller {
         }
     }
 
-    // Import CSV Data
-    public function import_csv_data(){
+    // Import Quotes From CSV
+    public function import_quotes(){
         if ($this->session->userdata('admin_logged_in')) {
-            $response = $this->data_model->importCSVData();
+            $data['page_title'] = "Import Quotes";
+            $data['page'] = "Quotes";
+            $data['sub_page'] = "Import Quotes";
+            $this->load->view('Admin/header', $data);
+            $this->load->view('Admin/import-quotes');
+            $this->load->view('Admin/footer');
+        } else {
+            redirect('admin', 'refresh');
+        }
+    }
+
+    // Import CSV Data
+    public function import_csv_data($type = ""){
+        if ($this->session->userdata('admin_logged_in')) {
+            $response = $this->data_model->importCSVData($type);
             if ($response==1) {
                 $this->session->set_flashdata('error_type', 'success');
-                $this->session->set_flashdata('error_msg', 'Instruments imported successfully');
-                redirect('admin/instruments', 'refresh');
+                $this->session->set_flashdata('error_msg', $type.' imported successfully');
+                redirect('admin/'. $type, 'refresh');
             } elseif ($response==100) {
                 $this->session->set_flashdata('error_type', 'error');
                 $this->session->set_flashdata('error_msg', 'Please upload only csv file');
-                redirect('admin/import_instruments', 'refresh');
+                redirect('admin/import_'. $type, 'refresh');
             } elseif ($response==101) {
                 $this->session->set_flashdata('error_type', 'error');
                 $this->session->set_flashdata('error_msg', 'Something wrong! Please check uploaded only csv file');
-                redirect('admin/import_instruments', 'refresh');
+                redirect('admin/import_'. $type, 'refresh');
             }
         } else {
             redirect('admin', 'refresh');
@@ -347,7 +361,7 @@ class Admin extends CI_Controller {
             // Get Quotes
             $data['quotes'] = $this->data_model->getQuotes();
             $data['page_title'] = "Quotes";
-            $data['page'] = "Qoutes";
+            $data['page'] = "Quotes";
             $this->load->view('Admin/header', $data);
             $this->load->view('Admin/quotes');
             $this->load->view('Admin/footer');
@@ -360,7 +374,7 @@ class Admin extends CI_Controller {
     public function add_quote() {
         if ($this->session->userdata('admin_logged_in')) {
             $data['page_title'] = "Add Quote";
-            $data['page'] = "Qoutes";
+            $data['page'] = "Quotes";
             $data['sub_page'] = "Add Quote";
             $this->load->view('Admin/header', $data);
             $this->load->view('Admin/add-quote');
@@ -426,6 +440,8 @@ class Admin extends CI_Controller {
                 $data['page'] = "Instruments";
                 $data['sub_page'] = "Update Instrument";
                 $data['institutions'] = $this->data_model->getInstitutions(1);
+                // Get Active Quotes
+                $data['quotes'] = $this->data_model->getQuotes(0, 1);
                 $data['instrument'] = $this->data_model->getInstruments(null, $id);
             } elseif ($type == 'quotes') {
                 $data['page_title'] = "Update Quote";
